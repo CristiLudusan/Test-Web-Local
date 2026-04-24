@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+   .buttons {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background: #3A3A3A;
+    color: #D1D1D1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.active-btn {
+    background: orange;
+}
+
+.menu {
+    max-width: 900px;
+    margin: auto;
+}
+
+.item {
+    background: orange;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 30px;
+}
+
+.category-title {
+    font-size: 30px;
+    margin-top: 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.subcategory {
+    margin-top: 20px;
+    color: #facc15;
+    text-align: left;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 10px;
+}
+</style>   
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Saint Cafe - Menu</title>
+      <link rel="stylesheet" href="./index-style.css">
+   </head>
+   <body style="background-color: #1a1a1a;">
+      <script data-template-id="country-code">window.__cf_country = "RO"</script>
+      
+      
+      <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function() {
+            const homeButton = document.querySelector(".button1");
+            homeButton.addEventListener("click", function() {
+               window.location.href = "./index-en.html";
+            });
+         });   
+
+         document.addEventListener("DOMContentLoaded", function() {
+            const reserveButton = document.querySelector(".language-switch");
+            reserveButton.addEventListener("click", function() {
+               window.location.href = "./menu.html";
+            });
+         });
+
+
+      </script>
+      <div class="main">
+      <div id="container">
+        <section>              
+            <div class="home">
+                <br>
+                <div class="home-layer">
+                    <button class="language-switch">
+                                    <div class="language-switch-text">RO</div>
+                                </button>
+                <div id="row-centre">
+                <img src="./images/coffe cup inverted.png" alt="Coffe Cup" class="home-image" height="300">
+                <h1 class="home-title">Saint</h1>
+                <br><br><br>
+                <div class="home-buttons">
+                    <button role="button" class="button1">Back to Main Page</button>
+                </div>
+                </div>
+                </div>
+                </div>
+        </section>
+                     
+        <section>
+            <div class="introduction-layer">
+            <div class="introduction">
+                <h2 class="introduction-title">menu</h2>
+            <div class="buttons" id="buttons"></div>
+            <div id="menu-container"></div>
+            </div>
+        </section>
+            </div>
+            </div>
+
+            <script>
+
+// 🔥 MENIUL TĂU (lăsat exact cum e)
+const rawMenu = `
+Coffee
+Espresso // ground coffee 17g // 30ml // 11 lei
+Espresso Macchiato // ground coffee 8g, milk foam // 40ml // 12 lei
+Long Black // ground coffee 17g // 100ml // 13 lei
+Americano // ground coffee 8g // 100ml // 10 lei
+Cappuccino // ground coffee 8g, milk foam // 150ml // 15 lei
+Cortado // ground coffee 17g, milk foam // 100ml // 14 lei
+Latte // ground coffee 8g, milk foam // 300ml // 18 lei
+Ice Latte // ground coffee, milk foam, ice // 300ml // 18 lei
+Flat White // ground coffee 17g, milk foam // 200ml // 17 lei
+Aeropress // ground coffee 17g // 200ml // 20 lei
+V60 // ground coffee 17g // 200ml // 20 lei
+Chemex // ground coffee 30g // 400ml // 26 lei
+Cold Brew // ground coffee 15g // 150ml // 18 lei
+Cold Brew Tonic // ground coffee 17g, tonic water // 200ml // 21 lei
+Orange Espresso // ground coffee 17g, fresh orange juice // 150ml // 20 lei
+Plant Milk // coconut, oat, almond // 4lei
+Extra Syrup // coconut, vanilla, caramel, salted caramel, hazelnut // 10ml // 3 lei
+
+Soft Drinks
+Coca Cola // 250ml // 11 lei
+Coca Cola Zero // 250 ml // 11 lei
+Fritz Cola // 330 ml // 17 lei
+Fritz Cola Zero // 330ml // 17 lei
+Mellow Mango // 330ml // 17 lei
+Fentimans Ginger Beer // 275 ml // 17 lei
+Fentimans Naturally Light Tonic // 200ml // 14 lei
+Fentimans Grapefruit Tonic // 200ml // 14 lei
+Fentimans Oriental Yuzu Tonic // 200ml // 14 lei
+C-Side Tonic // 330ml // 16 lei
+Still / Sparkling Water LURISIA // 330ml // 10 lei
+Still / Sparkling Water LURISIA // 750ml // 18 lei
+
+Lemonade // 330ml // 20 lei
+Fresh Juice // 250ml // 22 lei
+Ginger Boost // 100ml // 16 lei
+Matcha // 200ml // 20 lei
+Turmeric Latte // 200ml // 18 lei
+Infusion Tea // 200ml // 17 lei
+Hot Chocolate // 200ml // 17 lei
+
+Beer
+Peroni Nastro Azzuro // 330ml // 14 lei
+Peroni Stile Capri // 330ml // 15 lei
+Peroni Non-Alcoholic // 330ml // 14 lei
+
+Cocktails
+CLASSIC
+Aperol Spritz // Prosecco, Aperol, sparkling water, ice, orange // 28 lei
+Mojito // rum, lime juice, sugar syrup, mint, sparkling water // 28 lei
+Hugo // Prosecco, sparkling water, elderflower syrup, lime, mint // 28 lei
+Mimosa // Prosecco, orange juice, dandelion syrup // 25 lei
+Kir Royal // Prosecco, creme de cassis // 27 lei
+Espresso Martini // vodka, Kahlua, espresso, sugar syrup // 30 lei
+Campari Spritz // campari, Prosecco, sparkling water, orange // 28 lei
+Campari Orange // campari, orange juice // 25 lei
+Pornstar Martini // vanilla vodka, passion fruit liqueur, vanilla syrup, lime juice // 32 lei
+Fall Aperol Spritz // Prosecco, Aperol, pear juice, sparkling water, cinnamon, ice // 30 lei
+S'mores Espresso Martini // Vanilla Vodka, Kahula, Espresso, meringue syrup, maple syrup // 35 lei
+Sugar Cookie Martini // Vanilla, Vodka, Baileys, Birthday cake liqiour // 28 lei
+Grandpa's Cake // Vodka, red apple juice, cranberry juice, caramel syrup, lime juice, cinnamon, ice // 30 lei
+Screaming Orgasm // Vodka, Baileys, Amaretto, Kahula, almond milk, liquid whipped cream, ice // 38 lei
+Apple Pie On The Rocks // Apple cider, whiskey, Vanilla Vodka, ice // 28 lei
+Creme Brulee Whiskey // Whiskey, Baileys, sugar syrup, egg white, powdered sugar // 30 lei
+Hot Baileys // Baileys, Vodka, milk foam, cinnamon syrup // 32 lei
+RUM
+Cuba Libre // rum, cola, lime juice // 30 lei
+Mai Tai // rum, lime juice, orange curacao, almond syrup // 35 lei
+Pina Colada // rum, pineapple juice, whipped cream // 30 lei
+Dark'n Stormy // rum, ginger beer, lime juice // 33 lei
+Daiquiri // rum, lime juice, strawberry puree, grenadine syrup // 35 lei
+White Kiss // rum, coconut milk, lemon juice, cinnamon syrup // 32 lei
+GIN
+Gin & Tonic // gin, tonic water, lime // 30 lei
+Negroni // gin, campari, vermouth // 30 lei
+Martini // gin, vermouth // 32 lei
+London Mule // gin, ginger beer, lime // 30 lei
+Blue Saint // gin, elderflower cordial, blue curacao, egg white // 30 lei
+French 75 // gin, lemon, sugar syrup, Prosecco // 28 lei
+Mango Gin Frizz // gin, mango juice, sugar syrup, lime juice, passion fruit syrup, sprite, mint // 35 lei
+VODKA
+Cosmopolitan // vodka, cranberry juice, cointreau, lime juice // 27 lei
+Moscow Mule // vodka, ginger beer, lime // 30 lei
+White Russian // vodka, coffee liqueur, liquid whipped cream // 35 lei
+Black Saint // vodka, coffee liqueur, ginger beer, blackcurrant liqueur // 45 lei
+Sex On A Snowbank // vodka, coconut milk, white chocolate cream, vanilla bitters // 35 lei
+Spring Rain // vodka, lime juice, blue curacao, ginger beer // 31 lei
+WHISKEY
+Old Fashioned // bourbon, sugar, angostura bitter // 30 lei
+Manhattan // whiskey, vermouth, angostura bitter // 31 lei
+Whiskey Sour // bourbon, lemon juice, sugar, angostura bitter // 30 lei
+Boulevardier // campari, lemon juice, sugar, angostura bitter, egg white // 30 lei
+Godfather // amaretto, whiskey // 29 lei
+Naked On The Bells // bourbon, yellow chartreuse liquor, lime juice, mezcal // 38 lei
+TEQUILA
+Mexican Mule // tequila, ginger beer, lime juice // 30 lei
+Paloma // tequila, lime, sugar syrup, tonic water, grapefruit // 28 lei
+Siesta // tequila, campari, grapefruit juice, lime juice, sugar syrup // 28 lei
+Todos Santos // tequila, cointreau, lime juice // 28 lei
+Chilly Mango // tequila, lime juice, grapefruit juice, agave syrup, chilli sauce, mango puree // 30 lei
+Tequila Sour // tequila, aperol, strawberry syrup, lemon juice, egg white // 28 lei
+Tequila Sunrise // tequila, orange juice, grenadine syrup // 29 lei
+
+Mocktails
+Apple Pie Sip // apple juice, lime, apple pie syrup, vanilla sugar, cinnamon // 22 lei
+Grandma's Cake // apple, cinnamon, strawberry puree, caramel syrup, cranberry juice, apple juice // 25 lei
+Gin & Pear Affair // non-alcoholic gin, pear nectar, lime, honey syrup, nutmeg // 30 lei
+Shots
+Jelly Fish // campari, cointreau, gin Baileys // 20ml // 12 lei
+Lemon Drops // vodka, lemon juice, sugar syrup // 20ml // 7 lei
+B52 // coffee liqueur, cointreau, Baileys // 12 lei
+Tequila Shots // 20ml // 12 lei
+Jagermeister // 20ml // 12 lei
+Kamikaze // vodka, blue curacao, lemon juice // 20ml x 5 // 45 lei
+Alligator Sperm // melon liqueur, pineapple juice, whipped cream // 20ml x 5 // 42 lei
+Wet Pussy // vodka, peach tree, cranberry juice, pineapple juice // 20ml x 5 // 45 lei
+Hot Chocolate Baileys // Baileys, dark hot chocolate, whipped cream // 20ml x 5 // 38 lei
+Mulled Wine // 20ml // 25 lei
+
+Non-Alcoholic
+Virgin London Mule // non-alcoholic gin, ginger beer, lime // 30 lei
+Virgin Gin&Tonic // non-alcoholic gin, tonic water, lime // 30 lei
+Virgin Mango Gin Frizz // non-alcoholic gin, mango juice, sugar syrup, lime juice, passion fruit syrup, sprite, mint // 35 lei
+Grandma's Cake // apple, cinnamon, strawberry puree, caramel syrup, cranberry juice, apple juice // 25 lei
+Safe Sex // orange juice, grenadine syrup // 20 lei
+Red Devil // cranberry juice, orange juice, lime juice, grenadine syrup // 24 lei
+Safe Strawberry Daiqiri // strawberry syrup, lime juice, sprite, strawberries // 23 lei
+Raspberry Ginger Frizz // lime juice, sugar syrup, raspberry puree, mint, ginger beer // 24 lei
+
+Spirits
+WHISKEY
+Bulleit Bourbon // 40ml // 18 lei
+Gentleman Jack // 40ml // 18 lei
+Akashi // 40ml // 25 lei
+Hibiki // 40ml // 39 lei
+COGNAC
+Hennesey Vs // 40ml // 27 lei
+Hine Vsop // 40ml // 22 lei
+Courvoisier Xo // 40ml // 49 lei
+VODKA
+Absolut Flavours // 40ml // 18 lei
+Ciroc // 40ml // 20 lei
+Finlandia // 40ml // 15 lei
+Grey Goose // 40ml // 28 lei
+Haku // 40ml // 30 lei
+GIN
+Tanqueray // 40ml // 14 lei
+Gin Mare // 20 lei
+Hendrick's // 40ml // 18 lei
+Ukiyo Yuzu // 40ml // 16 lei
+Pușcălupi // 40ml // 36 lei
+RUM
+Havana Spiced // 40ml // 20 lei
+Bumbu Xo // 40ml // 30 lei
+Conde De Cuba // 40ml // 35 lei
+Don Papa 7y // 40ml // 35 lei
+Diplomatico 12y // 25 lei
+TEQUILA
+Don Julio Reposado // 40ml // 25 lei
+1800 Silver // 40ml // 24 lei
+LIQUEURS
+Sambuca // 40ml // 10 lei
+Disaronno // 40ml // 10 lei
+Mama Mia Limoncello // 40 ml // 14 lei
+Tatratea // 40ml // 16 lei
+
+Snacks
+PLATTERS
+Saint Plate // olives, parmesan, grapes, crackers, prosciutto crudo // 200gr // 29 lei
+Cheese Plate // gorgonzola, parmesan, aged cheddar, brie, walnut, grapes // 500gr // 68 lei
+Gourmet Plate // bresaola, fuet salami, prosciutto crudo, olives, crackers // 400gr // 68 lei
+Trio Starter // classic hummus, eggplant salad, mushroom zacusca, toasted bread // 300gr // 38 lei
+Green Olives // 140 gr // 15 lei
+Chips // 50gr // 10 lei
+Semifreddo // 100gr // 19 lei
+CANNED
+Sardines // 115gr // 45 lei
+Mussels // 110gr // 45 lei
+Tuna Fillet // 120gr // 40 lei
+CROISSANTS
+Butter Croissant // 8 lei
+Chocolate Croissant // 11 lei
+
+Bottled Wines
+WHITE
+Viognier Secret de Famille 2023, Cotes du Rhone AOC, 12.5%// 750ml // 120 lei
+Pinot Grigio - Implicit, 11.5% // 750ml // 95 lei
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 750ml // 120 lei
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 750ml // 95 lei
+ROSE
+La Plage Rose 12.5% // 750ml // 95 lei
+RED
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 750ml // 120 lei
+Syrah 2021, Cotes du Rhone AOC, 13.5% // 750ml // 120 lei
+Carmenere Reserva 2021, 13.5% // 750ml // 120 lei
+Fetească Neagră - Implicit, 14.5% // 750ml // 95 lei
+SPARKLING
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 750ml // 95 lei
+Cremant d'Alsace, 12% // 750ml // 145 lei
+PROSECCO
+Maschio dei Cavalieri Prosecco Valdobbiadene Superiore DOCG extra dry, 11% // 750ml // 120 lei
+Terre di Marca Prosecco Alb Extra Dry Bio Millessimato, 11% // 750ml // 95 lei
+Millesimato Brut Prosecco Superiore, Valdobbiadene DOGC, 11% // 750ml // 120 lei
+Cartizze Brut Villa Sandi Superiore DOCG, 11.5% // 750ml // 290 lei
+
+Wine by Glass
+WHITE
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 150ml // 27 lei
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 150ml // 23 lei
+ROSE
+La Plage Rose 12.5% // 150ml // 23 lei
+RED
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 150ml // 27 lei
+Fetească Neagră - Implicit, 14.5% // 150ml // 23 lei
+SPARKLING
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 150ml // 25 lei
+PROSECCO
+Terre di Marca Prosecco Alb, Extra Dry Bio Millessimato, 11% // 150ml // 23 lei
+Millesimato Brut Prosecco Superiore, Valdobbiadene, 11% // 150ml // 27 lei
+
+Sips Of The Season
+Biscoff Latte // ground coffee 17g, milk foam, cookie syrup, cinnamon, whipped cream, biscoff cookie // 24 lei
+Gingerbread Latte // ground coffee 17g, milk foam, vanilla syrup, gingerbread syrup, cinnamon, nutmeg, brown sugar, anise, whipped cream // 26 lei
+Pumpkin Spice Latte // ground coffee 17g, milk foam, vanilla syrup, cinnamon, nutmeg, brown sugar, anise, whipped cream // 28 lei
+Chai Latte // milk foam, chai latte syrup // 17 lei
+`;
+// ↑ aici NU schimbi nimic, păstrezi meniul tău complet
+
+
+// 🔥 PARSER FIX (NU mai depinde de categorii hardcodate)
+function parseMenu(text) {
+    const lines = text.split("\n").map(l => l.trim()).filter(l => l);
+    const menu = {};
+
+    let currentCategory = null;
+    let currentSub = null;
+
+    lines.forEach(line => {
+
+        // linie fără // = categorie sau subcategorie
+        if (!line.includes("//")) {
+
+            // SUBCATEGORIE = ALL CAPS
+            if (line === line.toUpperCase() && currentCategory) {
+                currentSub = line;
+                menu[currentCategory].subcategories[currentSub] = [];
+                return;
+            }
+
+            // CATEGORIE
+            currentCategory = line.toLowerCase();
+            menu[currentCategory] = {
+                title: line,
+                items: [],
+                subcategories: {}
+            };
+            currentSub = null;
+            return;
+        }
+
+        // ITEM
+        const parts = line.split("//").map(p => p.trim());
+
+        const item = {
+            name: parts[0],
+            details: parts.slice(1, -1).join(" // "),
+            price: parts[parts.length - 1]
+        };
+
+        if (currentSub) {
+            menu[currentCategory].subcategories[currentSub].push(item);
+        } else {
+            menu[currentCategory].items.push(item);
+        }
+
+    });
+
+    return menu;
+}
+
+const menuData = parseMenu(rawMenu);
+const categories = Object.keys(menuData);
+let currentIndex = 0;
+
+
+// 🔘 BUTOANE (NU afectează celelalte butoane)
+const buttonsDiv = document.getElementById("buttons");
+
+buttonsDiv.innerHTML = ""; // reset
+
+categories.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.innerText = menuData[cat].title;
+    btn.onclick = () => showMenu(cat);
+    buttonsDiv.appendChild(btn);
+});
+
+
+// 🔥 AFIȘARE
+function showMenu(category) {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = "";
+
+    currentIndex = categories.indexOf(category);
+
+    // 🔥 DOAR butoanele din meniu (nu EN / back)
+    document.querySelectorAll("#buttons button").forEach(b => b.classList.remove("active-btn"));
+    document.querySelectorAll("#buttons button")[currentIndex].classList.add("active-btn");
+
+    const data = menuData[category];
+
+    const title = document.createElement("div");
+    title.classList.add("category-title");
+    title.innerText = data.title;
+    container.appendChild(title);
+
+    // items simple
+    data.items.forEach(item => {
+        container.appendChild(createItem(item));
+    });
+
+    // subcategorii
+    for (let sub in data.subcategories) {
+        const subTitle = document.createElement("div");
+        subTitle.classList.add("subcategory");
+        subTitle.innerText = sub;
+        container.appendChild(subTitle);
+
+        data.subcategories[sub].forEach(item => {
+            container.appendChild(createItem(item));
+        });
+    }
+}
+
+
+// 🔧 ITEM UI
+function createItem(item) {
+    const div = document.createElement("div");
+    div.classList.add("item");
+
+    div.innerHTML = `
+        <div>
+            <strong>${item.name}</strong><br>
+            ${item.details}
+        </div>
+        <div>${item.price}</div>
+    `;
+
+    return div;
+}
+
+
+
+</script>
+
+
+   <footer class="footer">
+      <div class="footer-content">
+      <p class="copyright-footer" style="color: white;">© 2026 Saint Cafe · Baia Mare, Romania</p>
+      <p class="web-builder-footer" style="color: white;">Proudly built by <a href="https://www.instagram.com/ludusan.cristi/" target="_blank" style="color: cyan;">Cristi Ludușan</a></p>
+      <p class="terms-and-conditions" style="color: white;">Consult <a href="./terms-en.html" style="color: cyan;">Terms & Conditions</a></p>
+      </div>
+
+      <div class="anaf-links">
+    <a href="https://ec.europa.eu/consumers/odr" target="_blank">
+      <img src="./ANPC images/SOL.png" alt="Solutionare litigii online">
+    </a>
+
+    <a href="https://anpc.ro/" target="_blank">
+      <img src="./ANPC images/SAL.png" alt="SAL - Solutionare alternativa a litigiilor">
+    </a>
+  </div>
+   </footer>
+
+   </div>
+
+   </body>
+</html>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+
+   .buttons {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background: #3A3A3A;
+    color: #D1D1D1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.active-btn {
+    background: orange;
+}
+
+.menu {
+    max-width: 900px;
+    margin: auto;
+}
+
+.item {
+    background: orange;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 30px;
+}
+
+.category-title {
+    font-size: 30px;
+    margin-top: 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.subcategory {
+    margin-top: 20px;
+    color: #facc15;
+    text-align: left;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 10px;
+}
+</style>   
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <title>Saint Cafe - Meniu</title>
+      <link rel="stylesheet" href="./index-style.css">
+   </head>
+   <body style="background-color: #1a1a1a;">
+      <script data-template-id="country-code">window.__cf_country = "RO"</script>
+      
+      
+      <script type="text/javascript">
+         document.addEventListener("DOMContentLoaded", function() {
+            const homeButton = document.querySelector(".button1");
+            homeButton.addEventListener("click", function() {
+               window.location.href = "./index.html";
+            });
+         });   
+
+         document.addEventListener("DOMContentLoaded", function() {
+            const reserveButton = document.querySelector(".language-switch");
+            reserveButton.addEventListener("click", function() {
+               window.location.href = "./menu-en.html";
+            });
+         });
+
+
+      </script>
+      <div class="main">
+      <div id="container">
+        <section>              
+            <div class="home">
+                <br>
+                <div class="home-layer">
+                    <button class="language-switch">
+                                    <div class="language-switch-text">EN</div>
+                                </button>
+                <div id="row-centre">
+                <img src="./images/coffe cup inverted.png" alt="Coffe Cup" class="home-image" height="300">
+                <h1 class="home-title">Saint</h1>
+                <br><br><br>
+                <div class="home-buttons">
+                    <button role="button" class="button1">Înapoi la pagina principală</button>
+                </div>
+                </div>
+                </div>
+                </div>
+        </section>
+                     
+        <section>
+            <div class="introduction-layer">
+            <div class="introduction">
+                <h2 class="introduction-title">meniu</h2>
+            <div class="buttons" id="buttons"></div>
+            <div id="menu-container"></div>
+            </div>
+        </section>
+            </div>
+            </div>
+
+            <script>
+
+const rawMenu = `
+Cafea
+Espresso // cafea măcinată 17g // 30ml // 11 lei
+Espresso Macchiato // cafea măcinată 8g, cremă de lapte // 40ml // 12 lei
+Long Black // cafea măcinată 17g // 100ml // 13 lei
+Americano // cafea măcinată 8g // 100ml // 10 lei
+Cappuccino // cafea măcinată 8g, cremă de lapte // 150ml // 15 lei
+Cortado // cafea măcinată 17g, cremă de lapte // 100ml // 14 lei
+Latte // cafea măcinată 8g, cremă de lapte // 300ml // 18 lei
+Ice Latte // cafea măcinată, cremă de lapte, gheață // 300ml // 18 lei
+Flat White // cafea măcinată 17g, cremă de lapte // 200ml // 17 lei
+Aeropress // cafea măcinată 17g // 200ml // 20 lei
+V60 // cafea măcinată 17g // 200ml // 20 lei
+Chemex // cafea măcinată 30g // 400ml // 26 lei
+Cold Brew // cafea măcinată 15g // 150ml // 18 lei
+Cold Brew Tonic // cafea măcinată 17g, apă tonică // 200ml // 21 lei
+Orange Espresso // cafea măcinată 17g, fresh de portocale // 150ml // 20 lei
+Lapte Vegetal // cocos, ovăz, migdale // 4lei
+Sirop Extra // cocos, vanilie, caramel, caramel sărat, alune // 10ml // 3 lei
+
+Băuturi Răcoritoare
+Coca Cola // 250ml // 11 lei
+Coca Cola Zero // 250 ml // 11 lei
+Fritz Cola // 330 ml // 17 lei
+Fritz Cola Zero // 330ml // 17 lei
+Mellow Mango // 330ml // 17 lei
+Fentimans Ginger Beer // 275 ml // 17 lei
+Fentimans Naturally Light Tonic // 200ml // 14 lei
+Fentimans Grapefruit Tonic // 200ml // 14 lei
+Fentimans Oriental Yuzu Tonic // 200ml // 14 lei
+C-Side Tonic // 330ml // 16 lei
+Apă Plată / Minerală LURISIA // 330ml // 10 lei
+Apă Plată / Minerală LURISIA // 750ml // 18 lei
+
+Limonadă // 330ml // 20 lei
+Fresh // 250ml // 22 lei
+Ginger Boost // 100ml // 16 lei
+Matcha // 200ml // 20 lei
+Turmeric Latte // 200ml // 18 lei
+Ceai Infuzie // 200ml // 17 lei
+Ciocolată Caldă // 200ml // 17 lei
+
+Bere
+Peroni Nastro Azzuro // 330ml // 14 lei
+Peroni Stile Capri // 330ml // 15 lei
+Peroni Fără Alcool // 330ml // 14 lei
+
+Cocktail-uri
+CLASICE
+Aperol Spritz // Prosecco, Aperol, apă minerală, gheață, portocală // 28 lei
+Mojito // rom, suc lime, sirop zahăr, mentă, apă minerală // 28 lei
+Hugo // Prosecco, apă minerală, sirop soc, lime, mentă // 28 lei
+Mimosa // Prosecco, suc de portocale, sirop păpădie // 25 lei
+Kir Royal // Prosecco, creme de cassis // 27 lei
+Espresso Martini // vodka, Kahlua, espresso, sirop zahăr // 30 lei
+Campari Spritz // campari, Prosecco, apă minerală, portocală // 28 lei
+Campari Orange // campari, suc de portocale // 25 lei
+Pornstar Martini // vanila vodka, lichior fructul pasiunii, sirop vanilie, suc de lime // 32 lei
+Fall Aperol Spritz // Prosecco, Aperol, suc de pere, apă minerală, scorțișoară, gheață // 30 lei
+S'mores Espresso Martini // Vanilla Vodka, Kahula, Espresso, sirop de bezea, sirop de arțar // 35 lei
+Sugar Cookie Martini // Vanilla, Vodka, Baileys, Birthday cake liqiour // 28 lei
+Grandpa's Cake // Vodka, suc de măr roșu, suc cranberry, sirop de caramel, suc de lime, scorțișoară, gheață // 30 lei
+Screaming Orgasm // Vodka, Baileys, Amaretto, Kahula, lapte de migdale, frișcă lichidă, gheață // 38 lei
+Apple Pie On The Rocks // Apple cider, whiskey, Vanilla Vodka, gheață // 28 lei
+Creme Brulee Whiskey // Whiskey, Baileys, sirop zahăr, albuș de ou, zahăr pudră // 30 lei
+Hot Baileys // Baileys, Vodka, cremă de lapte, sirop de scorțișoară // 32 lei
+ROM
+Cuba Libre // rom, cola, suc lime // 30 lei
+Mai Tai // rom, suc de lime, orange curacao, sirop de migdale // 35 lei
+Pina Colada // rom, suc de ananas, cremă de frișcă // 30 lei
+Dark'n Stormy // rom, ginger beer, suc de lime // 33 lei
+Daiquiri // rom, suc de lime, piure de căpșuni, sirop de grenadine // 35 lei
+White Kiss // rom, lapte de cocos, suc de lămâie, sirop de scorțișoară // 32 lei
+GIN
+Gin & Tonic // gin, apă tonică, lime // 30 lei
+Negroni // gin, campari, vermut // 30 lei
+Martini // gin, vermut // 32 lei
+London Mule // gin, ginger beer, lime // 30 lei
+Blue Saint // gin, cordial soc, blue curacao, albuș de ou // 30 lei
+French 75 // gin, lămâie, sirop de zahăr, Prosecco // 28 lei
+Mango Gin Frizz // gin, suc de mango, sirop de zahăr, suc de lime, sirop fructul pasiunii, sprite, mentă // 35 lei
+VODKA
+Cosmopolitan // vodka, suc de merișoare, cointreau, suc lime // 27 lei
+Moscow Mule // vodka, ginger beer, lime // 30 lei
+White Russian // vodka, lichior de cafea, frișcă lichidă // 35 lei
+Black Saint // vodka, lichior de cafea, ginger beer, lichior de coacăze negre // 45 lei
+Sex On A Snowbank // vodka, lapte de cocos, cremă de ciocolată albă, bitter de vanilie // 35 lei
+Spring Rain // vodka, suc de lime, blue curacao, ginger beer // 31 lei
+WHISKEY
+Old Fashioned // burbon, zahăr, angostura bitter // 30 lei
+Manhattan // whiskey, vermut, angostura bitter // 31 lei
+Whiskey Sour // bourbon, suc lămâie, zahăr, angostura bitter // 30 lei
+Boulevardier // campari, suc lămâie, zahăr, angusta bitter, albuș de ou // 30 lei
+Godfather // amaretto, whiskey // 29 lei
+Naked On The Bells // bourbon, yellow castreuse liquor, suc de lime, mezcal // 38 lei
+TEQUILA
+Mexican Mule // tequila, ginger beer, suc de lime // 30 lei
+Paloma // tequila, lime, sirop zahăr, apă tonică, grapefruit // 28 lei
+Siesta // tequila, campari, suc de grapefruit, suc de lime, sirop zahăr // 28 lei
+Todos Santos // tequila, cointreau, suc de lime // 28 lei
+Chilly Mango // tequila, suc de lime, suc de grapefruit, sirop de agave, sos chilli, piure de mango // 30 lei
+Tequila Sour // tequila, aperol, sirop de căpșune, suc de lămâie, albuș de ou // 28 lei
+Tequila Sunrise // tequila, suc portocale, sirop grenadine // 29 lei
+
+Mocktail-uri
+Apple Pie Sip // suc de mere, lime, sirop apple pie, zahăr vanilat, scorțișoară // 22 lei
+Grandma's Cake // măr, scorțișoară, piure de căpșune, sirop caramel, suc merișoare, suc mere // 25 lei
+Gin & Pear Affair // Gin fără alcool, nectar de pere, lime, sirop de miere, nucșoară // 30 lei
+Shots
+Jelly Fish // campari, cointreau, gin Baileys // 20ml // 12 lei
+Lemon Drops // vodka, suc de lămâie, sirop de zahăr // 20ml // 7 lei
+B52 // lichior de cafea, cointreau, Baileys // 12 lei
+Tequila Shots // 20ml // 12 lei
+Jagermeister // 20ml // 12 lei
+Kamikaze // vodka, blue curacao, suc de lămâie // 20ml x 5 // 45 lei
+Alligator Sperm // lichior de pepene galben, suc de ananas, cremă de frișcă // 20ml x 5 // 42 lei
+Wet Pussy // vodka, peach tree, suc de merișoare, suc de ananas // 20ml x 5 // 45 lei
+Hot Chocolate Baileys // Baileys, ciocolată caldă neagră, frișcă // 20ml x 5 // 38 lei
+Mulled Wine // 20ml // 25 lei
+
+Non-Alcoolice
+Virgin London Mule // gin fără alcool, bere ghimbir, lime // 30 lei
+Virgin Gin&Tonic // gin fără alcool, apă tonică, lime // 30 lei
+Virgin Mango Gin Frizz // gin fără alcool, suc de mango, sirop de zahăr, suc de lime, sirop fructul pasiunii, sprite, mentă // 35 lei
+Grandma's Cake // măr, scorțișoară, piure de căpșune, sirop caramel, suc merișoare, suc mere // 25 lei
+Safe Sex // suc de portocale, sirop de grenadine // 20 lei
+Red Devil // suc de merișoare, suc de portocale, suc de lime, sirop de grenadine // 24 lei
+Safe Strawberry Daiqiri // sirop de căpșune, suc de lime, sprits, căpșune // 23 lei
+Raspberry Ginger Frizz // suc de lime, sirop de zahăr, piure de zmeură, mentă, ginger beer // 24 lei
+
+Spirits
+WHISKEY
+Bulleit Bourbon // 40ml // 18 lei
+Gentleman Jack // 40ml // 18 lei
+Akashi // 40ml // 25 lei
+Hibiki // 40ml // 39 lei
+COGNAC
+Hennesey Vs // 40ml // 27 lei
+Hine Vsop // 40ml // 22 lei
+Courvoisier Xo // 40ml // 49 lei
+VODKA
+Absolut Flavours // 40ml // 18 lei
+Ciroc // 40ml // 20 lei
+Finlandia // 40ml // 15 lei
+Grey Goose // 40ml // 28 lei
+Haku // 40ml // 30 lei
+GIN
+Tanqueray // 40ml // 14 lei
+Gin Mare // 20 lei
+Hendrick's // 40ml // 18 lei
+Ukiyo Yuzu // 40ml // 16 lei
+Pușcălupi // 40ml // 36 lei
+ROM
+Havana Spiced // 40ml // 20 lei
+Bumbu Xo // 40ml // 30 lei
+Conde De Cuba // 40ml // 35 lei
+Don Papa 7y // 40ml // 35 lei
+Diplomatico 12y // 25 lei
+TEQUILA
+Don Julio Reposado // 40ml // 25 lei
+1800 Silver // 40ml // 24 lei
+LIQUORS
+Sambuca // 40ml // 10 lei
+Disaronno // 40ml // 10 lei
+Mama Mia Limoncello // 40 ml // 14 lei
+Tatratea // 40ml // 16 lei
+
+Gustări
+PLATOURI
+Saint Plate // măsline, parmezan, struguri, crackers, prosciutto crudo // 200gr // 29 lei
+Cheese Plate // gorgonzola, parmezan, cheddar maturat, brie, nucă, struguri // 500gr // 68 lei
+Gourmet Plate // bresaola, salam fuet, prosciutto cruso, măsline, crackers // 400gr // 68 lei
+Trio Starter // hummus classic, salată de vinete, zacuscă de ciuperci, pâine prăjită // 300gr // 38 lei
+Green Olives // 140 gr // 15 lei
+Chips // 50gr // 10 lei
+Semifreddo // 100gr // 19 lei
+CONSERVE
+Sardine // 115gr // 45 lei
+Midii // 110gr // 45 lei
+Ton FIle // 120gr // 40 lei
+CROISSANTE
+Butter Croissant // 8 lei
+Chocolate Croissant // 11 lei
+
+Vinuri Sticlă
+ALB
+Viognier Secret de Famille 2023, Cotes du Rhone AOC, 12.5%// 750ml // 120 lei
+Pinot Grigio - Implicit, 11.5% // 750ml // 95 lei
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 750ml // 120 lei
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 750ml // 95 lei
+ROSE
+La Plage Rose 12.5% // 750ml // 95 lei
+ROȘU
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 750ml // 120 lei
+Syrah 2021, Cotes du Rhone AOC, 13.5% // 750ml // 120 lei
+Carmenere Reserva 2021, 13.5% // 750ml // 120 lei
+Fetească Neagră - Implicit, 14.5% // 750ml // 95 lei
+SPUMANT
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 750ml // 95 lei
+Cremant d'Alsace, 12% // 750ml // 145 lei
+PROSECCO
+Maschio dei Cavalieri Prosecco Valdobbiadene Superiore DOCG extra dry, 11% // 750ml // 120 lei
+Terre di Marca Prosecco Alb Extra Dry Bio Millessimato, 11% // 750ml // 95 lei
+Millesimato Brut Prosecco Superiore, Valdobbiadene DOGC, 11% // 750ml // 120 lei
+Cartizze Brut Villa Sandi Superiore DOCG, 11.5% // 750ml // 290 lei
+
+Vinuri Pahar
+ALB
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 150ml // 27 lei
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 150ml // 23 lei
+ROSE
+La Plage Rose 12.5% // 150ml // 23 lei
+ROȘU
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 150ml // 27 lei
+Fetească Neagră - Implicit, 14.5% // 150ml // 23 lei
+SPUMANT
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 150ml // 25 lei
+PROSECCO
+Terre di Marca Prosecco Alb, Extra Dry Bio Millessimato, 11% // 150ml // 23 lei
+Millesimato Brut Prosecco Superiore, Valdobbiadene, 11% // 150ml // 27 lei
+
+Sips Of The Season
+Biscoff Latte // cafea măcinată 17g, cremă de lapte, sirop cookie, scorțișoară, frișcă, biscoff cookie // 24 lei
+Gingerbread Latte // cafea măcinată 17g, cremă de lapte, sirop de vanilie, sirop gingerbread, scorțișoară, nucșoară, zahăr brun, anason, frișcă // 26 lei
+Pumpkin Spice Latte // cafea măcinată 17g, cremă de lapte, sirop de vanilie, scorțișoară, nucșoară, zahăr brun, anason, frișcă // 28 lei
+Chai Latte // cremă de lapte, sirop chai latte // 17 lei
+`;
+
+
+function parseMenu(text) {
+    const lines = text.split("\n").map(l => l.trim()).filter(l => l);
+    const menu = {};
+
+    let currentCategory = null;
+    let currentSub = null;
+
+    lines.forEach(line => {
+
+        // linie fără // = categorie sau subcategorie
+        if (!line.includes("//")) {
+
+            // SUBCATEGORIE = ALL CAPS
+            if (line === line.toUpperCase() && currentCategory) {
+                currentSub = line;
+                menu[currentCategory].subcategories[currentSub] = [];
+                return;
+            }
+
+            // CATEGORIE
+            currentCategory = line.toLowerCase();
+            menu[currentCategory] = {
+                title: line,
+                items: [],
+                subcategories: {}
+            };
+            currentSub = null;
+            return;
+        }
+
+        // ITEM
+        const parts = line.split("//").map(p => p.trim());
+
+        const item = {
+            name: parts[0],
+            details: parts.slice(1, -1).join(" // "),
+            price: parts[parts.length - 1]
+        };
+
+        if (currentSub) {
+            menu[currentCategory].subcategories[currentSub].push(item);
+        } else {
+            menu[currentCategory].items.push(item);
+        }
+
+    });
+
+    return menu;
+}
+
+const menuData = parseMenu(rawMenu);
+const categories = Object.keys(menuData);
+let currentIndex = 0;
+
+
+const buttonsDiv = document.getElementById("buttons");
+
+buttonsDiv.innerHTML = ""; // reset
+
+categories.forEach((cat) => {
+    const btn = document.createElement("button");
+    btn.innerText = menuData[cat].title;
+    btn.onclick = () => showMenu(cat);
+    buttonsDiv.appendChild(btn);
+});
+
+
+function showMenu(category) {
+    const container = document.getElementById("menu-container");
+    container.innerHTML = "";
+
+    currentIndex = categories.indexOf(category);
+
+    document.querySelectorAll("#buttons button").forEach(b => b.classList.remove("active-btn"));
+    document.querySelectorAll("#buttons button")[currentIndex].classList.add("active-btn");
+
+    const data = menuData[category];
+
+    const title = document.createElement("div");
+    title.classList.add("category-title");
+    title.innerText = data.title;
+    container.appendChild(title);
+
+    // items simple
+    data.items.forEach(item => {
+        container.appendChild(createItem(item));
+    });
+
+    // subcategorii
+    for (let sub in data.subcategories) {
+        const subTitle = document.createElement("div");
+        subTitle.classList.add("subcategory");
+        subTitle.innerText = sub;
+        container.appendChild(subTitle);
+
+        data.subcategories[sub].forEach(item => {
+            container.appendChild(createItem(item));
+        });
+    }
+}
+
+
+function createItem(item) {
+    const div = document.createElement("div");
+    div.classList.add("item");
+
+    div.innerHTML = `
+        <div>
+            <strong>${item.name}</strong><br>
+            ${item.details}
+        </div>
+        <div>${item.price}</div>
+    `;
+
+    return div;
+}
+
+
+
+</script>
+
+
+   <footer class="footer">
+      <div class="footer-content">
+      <p class="copyright-footer" style="color: white;">© 2026 Saint Cafe · Baia Mare, Romania</p>
+      <p class="web-builder-footer" style="color: white;">Proudly built by <a href="https://www.instagram.com/ludusan.cristi/" target="_blank" style="color: cyan;">Cristi Ludușan</a></p>
+      <p class="terms-and-conditions" style="color: white;">Consult <a href="./terms.html" style="color: cyan;">Terms & Conditions</a></p>
+      </div>
+
+      <div class="anaf-links">
+    <a href="https://ec.europa.eu/consumers/odr" target="_blank">
+      <img src="./ANPC images/SOL.png" alt="Solutionare litigii online">
+    </a>
+
+    <a href="https://anpc.ro/" target="_blank">
+      <img src="./ANPC images/SAL.png" alt="SAL - Solutionare alternativa a litigiilor">
+    </a>
+  </div>
+   </footer>
+
+   </div>
+
+   </body>
+</html>

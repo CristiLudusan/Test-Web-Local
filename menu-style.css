@@ -2,7 +2,7 @@
     margin: 20px;
 }
 
-button {
+.menu-buttons button {
     padding: 10px 20px;
     margin: 5px;
     border: none;
@@ -296,85 +296,6 @@ body
   transform: scale(1.1);
 }
 
-
-@media (max-width: 768px) {
-
-    body {
-        background-attachment: scroll;
-    }
-
-    /* 🔥 layer identic cu index */
-    .menu-layer {
-        width: 85%;
-        padding: 20px;
-        border-radius: 20px;
-        margin: 50px auto;
-    }
-
-    /* 🔥 titlu identic cu index */
-    .menu-title {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
-        letter-spacing: 4px;
-        margin-bottom: 40px;
-    }
-
-    /* 🔥 butoane ca pe homepage */
-    .menu-buttons {
-    display: flex;
-    flex-wrap: wrap; /* 🔥 KEY */
-    justify-content: center;
-    gap: 12px;
-}
-
-    .menu-buttons button {
-    flex: 1 1 140px; /* 🔥 IMPORTANT */
-    max-width: 200px;
-
-    font-size: 18px;
-    padding: 14px 16px;
-
-    min-height: 50px;
-}
-
-    .button-return {
-    width: 100%;
-    max-width: 300px;
-
-    font-size: 18px;
-    padding: 14px 16px;
-}
-
-    /* 🔥 container centrat */
-    #menu-container {
-        width: 100%;
-    }
-
-    /* 🔥 items identice ca vibe cu textul din index */
-    .item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-
-        font-size: 16px;
-        padding: 12px;
-    }
-
-    /* 🔥 titluri consistente */
-    .category-title {
-        font-size: clamp(1.5rem, 6vw, 2.5rem);
-        letter-spacing: 4px;
-        text-align: center;
-    }
-
-    .subcategory {
-        font-size: 18px;
-        margin-left: 0;
-    }
-
-    
-
-}
-
 .item {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -408,3 +329,135 @@ body
         transform: translateY(0);
     }
 }
+
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
+
+    /* Aliniere cu .introduction-title din index */
+    .menu-title {
+        font-size: 40px; /* Valoarea fixă din media query-ul tau de index */
+        letter-spacing: 4px;
+        margin-bottom: 40px;
+        text-align: center;
+        opacity: 1;
+        font-family: TitleFont, sans-serif;
+        text-transform: uppercase;
+    }
+
+    /* Aliniere cu .button1, .button2 din index */
+    .button-return {
+        width: 100%;
+        max-width: 250px; /* Limita din index */
+        font-size: 20px;   /* Match cu .button1 din index la max-width 768px */
+        margin: 10px 0;
+        padding: 14px 16px;
+    }
+
+    .menu-buttons {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto 30px auto;
+        background: rgba(0, 0, 0, 0.9); /* Negru ca în index */
+        border: 2px solid orange;
+        border-radius: 15px;
+        overflow: hidden;
+        max-height: 55px; /* Înălțimea unui singur buton (închis) */
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    /* Clasa care se activează la click pentru a deschide lista */
+    .menu-buttons.expanded {
+        max-height: 600px; /* Suficient cât să încapă toate categoriile */
+    }
+
+    .menu-buttons button {
+        width: 100%;
+        margin: 0 !important;
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 18px;
+        padding: 15px;
+        background: transparent;
+        color: white;
+        flex: none;
+        max-width: none;
+        text-align: center;
+    }
+
+    /* Butonul activ stă mereu sus și are indicator că se poate da click */
+    .active-btn {
+        order: -1; 
+        background: orange !important;
+        color: black !important;
+        font-weight: bold;
+    }
+
+    .active-btn::after {
+        content: ' ▾'; /* Indicator vizual că meniul e expandabil */
+        font-size: 14px;
+    }
+
+    /* Ajustare restul elementelor să fie ca în Index */
+    .menu-layer {
+        width: 85%;
+        padding: 20px;
+        margin: 20px auto;
+    }
+
+    /* Ajustare Item pentru a fi similar cu About/Intro din Index */
+    .item {
+        flex-direction: row; /* Menținem prețul în dreapta */
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        font-size: 18px;    /* Apropiat de cei 20px din index dar adaptat pentru liste */
+        padding: 15px;
+        margin: 8px 0;
+        background: orange;
+        border-radius: 15px;
+    }
+
+    .item strong {
+        font-size: 19px;
+    }
+
+    /* Titlurile de categorii (Match cu .introduction-title din index) */
+    .category-title {
+        font-size: 40px; 
+        letter-spacing: 4px;
+        margin: 30px 0 15px 0;
+    }
+
+    .subcategory {
+        font-size: 20px;
+        margin-top: 15px;
+        text-align: left;
+    }
+
+    /* Elementele de switch și footer (identice cu index) */
+    .language-switch {
+        top: 10px;
+        right: 10px;
+        font-size: 14px;
+        padding: 0.5em 1em;
+    }
+
+    .footer-content {
+        font-size: 14px;
+        text-align: center;
+        margin: 10px;
+    }
+
+    #menu-container {
+        width: 100%;
+    }
+}
+

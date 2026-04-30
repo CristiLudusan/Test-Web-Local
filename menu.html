@@ -436,6 +436,21 @@ function createItem(item) {
 }
 
 
+document.querySelector('.menu-buttons').addEventListener('click', function(e) {
+    // Verificăm dacă suntem pe mobil (ecran sub 768px)
+    if (window.innerWidth <= 768) {
+        const container = this;
+        
+        // Dacă dăm click pe butonul care este deja activ, deschidem/închidem lista
+        if (e.target.classList.contains('active-btn')) {
+            container.classList.toggle('expanded');
+        } else if (e.target.tagName === 'BUTTON') {
+            // Dacă alegem o categorie nouă, o selectăm și închidem lista
+            container.classList.remove('expanded');
+        }
+    }
+});
+
 
 </script>
 

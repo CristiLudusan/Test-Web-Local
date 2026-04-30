@@ -10,7 +10,7 @@ button {
     color: #D1D1D1;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .active-btn {
@@ -88,6 +88,7 @@ body
     place-items: center;
     text-align: center;
     margin: auto;
+    margin-bottom: 30px;
 }
 .home-title
 {
@@ -126,6 +127,7 @@ body
 
   margin-left: 20px;
   margin-right: 20px;
+  margin-bottom: 20px;
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
   color: var(--color);
   --_p: var(--s);
@@ -135,7 +137,7 @@ body
   transition: .3s linear, color 0s, background-color 0s;
   outline: var(--b) solid #0000;
   outline-offset: .6em;
-  font-size: 25px;
+  font-size: 40px;
 
   border: 0;
 
@@ -301,54 +303,75 @@ body
         background-attachment: scroll;
     }
 
-    .home-layer,
-    .menu-layer
-    {
+    /* 🔥 layer identic cu index */
+    .menu-layer {
         width: 85%;
         padding: 20px;
         border-radius: 20px;
+        margin: 50px auto;
     }
 
-    .home-title {
-    font-size: clamp(3rem, 10vw, 6rem);
+    /* 🔥 titlu identic cu index */
+    .menu-title {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        letter-spacing: 4px;
+        margin-bottom: 40px;
+    }
+
+    /* 🔥 butoane ca pe homepage */
+    .menu-buttons {
+    display: flex;
+    flex-wrap: wrap; /* 🔥 KEY */
+    justify-content: center;
+    gap: 12px;
 }
-
-.menu-title {
-    font-size: clamp(2rem, 6vw, 3rem);
-}
-
-    .home-description,
-    .menu {
-        font-size: 16px;
-    }
-
-    .menu-layer {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .menu {
-        margin-top: 40px;
-    }
 
     .menu-buttons button {
-        width: 100%; /* 🔥 full width pe telefon */
+    flex: 1 1 140px; /* 🔥 IMPORTANT */
+    max-width: 200px;
+
+    font-size: 18px;
+    padding: 14px 16px;
+
+    min-height: 50px;
+}
+
+    .button-return {
+    width: 100%;
+    max-width: 300px;
+
+    font-size: 18px;
+    padding: 14px 16px;
+}
+
+    /* 🔥 container centrat */
+    #menu-container {
+        width: 100%;
     }
 
+    /* 🔥 items identice ca vibe cu textul din index */
     .item {
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
+
+        font-size: 16px;
+        padding: 12px;
     }
 
-.category-title {
-    font-size: clamp(18px, 5vw, 28px);
-}
+    /* 🔥 titluri consistente */
+    .category-title {
+        font-size: clamp(1.5rem, 6vw, 2.5rem);
+        letter-spacing: 4px;
+        text-align: center;
+    }
 
-.subcategory {
-    font-size: clamp(16px, 4vw, 22px);
-}
+    .subcategory {
+        font-size: 18px;
+        margin-left: 0;
+    }
 
+    
 
 }
 

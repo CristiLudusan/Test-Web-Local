@@ -1,0 +1,387 @@
+.buttons {
+    margin: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    background: #3A3A3A;
+    color: #D1D1D1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.active-btn {
+    background: orange;
+}
+
+.menu {
+    max-width: 900px;
+    margin: auto;
+}
+
+.item {
+    background: orange;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    font-size: 30px;
+}
+
+.category-title {
+    font-size: 30px;
+    margin-top: 20px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.subcategory {
+    margin-top: 20px;
+    color: #facc15;
+    text-align: left;
+    font-weight: bold;
+    font-size: 25px;
+    margin-left: 10px;
+}
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Previne scroll-ul orizontal accidental */
+}
+
+body
+{
+    background-image: url(./images/saint-cafe-interior.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+@font-face {
+    font-family: TitleFont;
+    src: url(https://fonts.cdnfonts.com/css/helvetica-neue-555c) format('woff2');
+}
+
+.home-layer
+{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 85%;
+    height: 40%;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+    text-align: center;
+    margin: auto;
+}
+.home-title
+{
+    font-weight: 200;
+    font-size: clamp(5rem, 13vw, 10rem);
+    color: white;
+    opacity: 1;
+    transform: none;
+    font-family: TitleFont, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    user-select: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    place-items: center;
+    margin: 0;
+    letter-spacing: 8px;
+}
+
+.home-buttons
+{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-items: center;
+}
+
+.button-return
+{
+    --b: 3px;
+  --s: .45em;
+  --color: #fff;
+
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+  color: var(--color);
+  --_p: var(--s);
+  background:
+    conic-gradient(from 90deg at var(--b) var(--b),#0000 90deg,var(--color) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+  transition: .3s linear, color 0s, background-color 0s;
+  outline: var(--b) solid #0000;
+  outline-offset: .6em;
+  font-size: 25px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-return:hover, button-return:focus-visible
+{
+  --_p: 0px;
+  outline-color: var(--color);
+  outline-offset: .05em;
+}
+
+.button-return:active
+{
+  background-color: var(--color);
+  color: #fff;
+}
+
+.menu
+{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.menu-title
+{
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: white;
+    opacity: 1;
+    font-family: TitleFont, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    user-select: none;
+    margin-bottom: 90px;
+    text-align: center;
+    align-items: center;
+}
+
+.menu-content
+{
+    display: flex;
+    gap: 100px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+    user-select: none;
+    margin-left: 40px;
+}
+
+.menu-layer
+{
+    background-color: rgba(0, 0, 0, 0.8);
+    width: 85%;
+    height: 40%;
+    border-radius: 40px;
+    display: flex;
+    margin: 100px auto;  
+    align-items: center;
+    justify-content: center;  
+}
+
+.footer
+{
+    background-color: black;
+    width: 100%;
+    border-top: white solid 1px;
+}
+
+.main
+{
+    flex: 1;
+}
+
+.footer-content
+{
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+
+.language-switch {
+  background: black;
+  border-radius: 0.5em;
+  box-shadow:
+    inset 0px -6px 18px -6px rgba(3, 15, 20, 0),
+    inset rgba(54, 69, 75, 1) -1px -1px 6px 0px,
+    inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
+    inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
+    rgba(54, 69, 75, 1) -1px -1px 6px 0px;
+  border: solid 2px #030f14;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0.7em 1.7em;
+  outline: none;
+  transition: all 0.3s;
+  user-select: none;
+  position: fixed;
+    top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.language-switch:hover {
+  box-shadow:
+    inset 0px -6px 18px -6px rgba(3, 15, 20, 1),
+    inset 0px 6px 18px -6px rgba(3, 15, 20, 1),
+    inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
+    inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
+    -1px -1px 6px 0px rgba(54, 69, 75, 1);
+}
+
+.language-switch:active {
+  box-shadow:
+    inset 0px -12px 12px -6px rgba(3, 15, 20, 1),
+    inset 0px 12px 12px -6px rgba(3, 15, 20, 1),
+    inset 12px 0px 12px -6px rgba(3, 15, 20, 1),
+    inset -12px 0px 12px -6px rgba(3, 15, 20, 1),
+    -1px -1px 6px 0px rgba(54, 69, 75, 1);
+}
+
+.language-switch-text {
+  color: wheat;
+  font-weight: 700;
+  margin: auto;
+  transition: all 0.3s;
+  width: fit-content;
+}
+
+.language-switch:hover .language-switch-text {
+  transform: scale(0.9);
+}
+
+.language-switch:active .language-switch-text {
+  transform: scale(0.8);
+}
+
+.anaf-links
+{
+    text-align: center;
+}
+
+.anaf-links img {
+  height: 50px;
+  margin: 0 10px;
+  transition: transform 0.2s;
+}
+
+.anaf-links img:hover {
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 768px) {
+
+    body {
+        background-attachment: scroll;
+    }
+
+    .home-layer,
+    .menu-layer
+    {
+        width: 85%;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .home-title {
+    font-size: clamp(3rem, 10vw, 6rem);
+}
+
+.menu-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+}
+
+    .home-description,
+    .menu {
+        font-size: 16px;
+    }
+
+    .menu-layer {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .menu {
+        margin-top: 40px;
+    }
+
+    .menu-buttons button {
+        width: 100%; /* 🔥 full width pe telefon */
+    }
+
+    .item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+.category-title {
+    font-size: clamp(18px, 5vw, 28px);
+}
+
+.subcategory {
+    font-size: clamp(16px, 4vw, 22px);
+}
+
+
+}
+
+.item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(255,165,0,0.5);
+}
+
+.menu-animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease;
+}
+
+.menu-animate.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* fiecare item animat individual */
+.item {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeUp 0.4s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

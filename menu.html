@@ -1,68 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-   
+<html lang="ro">
 <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <title>Saint Cafe - Meniu</title>
-      <link rel="stylesheet" href="./menu-style.css">
-   </head>
-   <body style="background-color: #1a1a1a;">
-      <script data-template-id="country-code">window.__cf_country = "RO"</script>
-      
-      
-      <script type="text/javascript">
-         document.addEventListener("DOMContentLoaded", function() {
-            const homeButton = document.querySelector(".button-return");
-            homeButton.addEventListener("click", function() {
-               window.location.href = "./index.html";
-            });
-         });   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saint Cafe - Meniu</title>
+    <link rel="stylesheet" href="./menu-style.css">
+</head>
+<body>
+    <div class="main">
+        <div id="container">
+            <!-- Secțiunea de sus: Logo și Buton Revenire -->
+            <section>
+                <div class="home">
+                    <div class="home-layer">
+                        <button class="language-switch" id="lang-en">
+                            <div class="language-switch-text">EN</div>
+                        </button>
+                        <div id="row-centre">
+                            <img src="./images/coffe cup inverted.png" alt="Coffee Cup" class="home-image" height="300">
+                            <h1 class="home-title">Saint</h1>
+                            <div class="home-buttons">
+                                <button class="button-return" id="btn-home">Înapoi la pagina principală</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-         document.addEventListener("DOMContentLoaded", function() {
-            const reserveButton = document.querySelector(".language-switch");
-            reserveButton.addEventListener("click", function() {
-               window.location.href = "./menu-en.html";
-            });
-         });
+            <!-- Secțiunea de Meniu Dinamic -->
+            <section>
+                <div class="menu-layer">
+                    <div class="menu">
+                        <h2 class="menu-title">meniu</h2>
+                        <div class="menu-buttons" id="menu-buttons"></div>
+                        <div id="menu-container"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
 
-
-      </script>
-      <div class="main">
-      <div id="container">
-        <section>              
-            <div class="home">
-                <br>
-                <div class="home-layer">
-                    <button class="language-switch">
-                                    <div class="language-switch-text">EN</div>
-                                </button>
-                <div id="row-centre">
-                <img src="./images/coffe cup inverted.png" alt="Coffe Cup" class="home-image" height="300">
-                <h1 class="home-title">Saint</h1>
-                <br><br><br>
-                <div class="home-buttons">
-                    <button role="button" class="button-return">Înapoi la pagina principală</button>
-                </div>
-                </div>
-                </div>
-                </div>
-        </section>
-                     
-        <section>
-            <div class="menu-layer">
-            <div class="menu">
-                <h2 class="menu-title">meniu</h2>
-            <div class="menu-buttons" id="menu-buttons"></div>
-            <div id="menu-container"></div>
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="copyright-footer">© 2026 Saint Cafe · Baia Mare, Romania</p>
+                <p class="web-builder-footer">Proudly built by <a href="https://www.instagram.com/ludusan.cristi/" target="_blank" style="color: cyan;">Cristi Ludușan</a></p>
+                <p class="terms-and-conditions">Consult <a href="./terms.html" style="color: cyan;">Terms & Conditions</a></p>
             </div>
-        </section>
+            <div class="anaf-links">
+                <a href="https://ec.europa.eu/consumers/odr" target="_blank"><img src="./ANPC images/SOL.png" alt="SOL"></a>
+                <a href="https://anpc.ro/" target="_blank"><img src="./ANPC images/SAL.png" alt="SAL"></a>
             </div>
-            </div>
+        </footer>
+    </div>
 
-            <script>
+    <script>
+        // REDIRECTS
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("btn-home").onclick = () => window.location.href = "./index.html";
+            document.getElementById("lang-en").onclick = () => window.location.href = "./menu-en.html";
+        });
 
-// 🔥 MENIUL TĂU (lăsat exact cum e)
-const rawMenu = `
+        // DATE MENIU
+        const rawMenu = `
 Coffee
 Espresso // ground coffee 17g // 30ml // 11 lei
 Espresso Macchiato // ground coffee 8g, milk foam // 40ml // 12 lei
@@ -170,6 +168,7 @@ Mocktails
 Apple Pie Sip // apple juice, lime, apple pie syrup, vanilla sugar, cinnamon // 22 lei
 Grandma's Cake // apple, cinnamon, strawberry puree, caramel syrup, cranberry juice, apple juice // 25 lei
 Gin & Pear Affair // non-alcoholic gin, pear nectar, lime, honey syrup, nutmeg // 30 lei
+
 Shots
 Jelly Fish // campari, cointreau, gin Baileys // 20ml // 12 lei
 Lemon Drops // vodka, lemon juice, sugar syrup // 20ml // 7 lei
@@ -289,191 +288,109 @@ Gingerbread Latte // ground coffee 17g, milk foam, vanilla syrup, gingerbread sy
 Pumpkin Spice Latte // ground coffee 17g, milk foam, vanilla syrup, cinnamon, nutmeg, brown sugar, anise, whipped cream // 28 lei
 Chai Latte // milk foam, chai latte syrup // 17 lei
 `;
-// ↑ aici NU schimbi nimic, păstrezi meniul tău complet
 
+        function parseMenu(text) {
+            const lines = text.split("\n").map(l => l.trim()).filter(l => l);
+            const menu = {};
+            let currentCategory = null;
+            let currentSub = null;
 
-// 🔥 PARSER FIX (NU mai depinde de categorii hardcodate)
-function parseMenu(text) {
-    const lines = text.split("\n").map(l => l.trim()).filter(l => l);
-    const menu = {};
+            lines.forEach(line => {
+                if (!line.includes("//")) {
+                    if (line === line.toUpperCase() && currentCategory) {
+                        currentSub = line;
+                        menu[currentCategory].subcategories[currentSub] = [];
+                        return;
+                    }
+                    currentCategory = line.toLowerCase();
+                    menu[currentCategory] = { title: line, items: [], subcategories: {} };
+                    currentSub = null;
+                    return;
+                }
+                const parts = line.split("//").map(p => p.trim());
+                const item = {
+                    name: parts[0],
+                    details: parts.slice(1, -1).join(" // "),
+                    price: parts[parts.length - 1]
+                };
+                if (currentSub) menu[currentCategory].subcategories[currentSub].push(item);
+                else menu[currentCategory].items.push(item);
+            });
+            return menu;
+        }
 
-    let currentCategory = null;
-    let currentSub = null;
+        const menuData = parseMenu(rawMenu);
+        const categories = Object.keys(menuData);
+        const buttonsDiv = document.getElementById("menu-buttons");
 
-    lines.forEach(line => {
-
-        // linie fără // = categorie sau subcategorie
-        if (!line.includes("//")) {
-
-            // SUBCATEGORIE = ALL CAPS
-            if (line === line.toUpperCase() && currentCategory) {
-                currentSub = line;
-                menu[currentCategory].subcategories[currentSub] = [];
-                return;
-            }
-
-            // CATEGORIE
-            currentCategory = line.toLowerCase();
-            menu[currentCategory] = {
-                title: line,
-                items: [],
-                subcategories: {}
+        categories.forEach((cat) => {
+            const btn = document.createElement("button");
+            btn.innerText = menuData[cat].title;
+            btn.onclick = (e) => {
+                showMenu(cat);
+                if (window.innerWidth <= 768) {
+                    const container = document.querySelector('.menu-buttons');
+                    if (btn.classList.contains('active-btn')) {
+                        container.classList.toggle('expanded');
+                    } else {
+                        container.classList.remove('expanded');
+                    }
+                }
             };
-            currentSub = null;
-            return;
-        }
-
-        // ITEM
-        const parts = line.split("//").map(p => p.trim());
-
-        const item = {
-            name: parts[0],
-            details: parts.slice(1, -1).join(" // "),
-            price: parts[parts.length - 1]
-        };
-
-        if (currentSub) {
-            menu[currentCategory].subcategories[currentSub].push(item);
-        } else {
-            menu[currentCategory].items.push(item);
-        }
-
-    });
-
-    return menu;
-}
-
-const menuData = parseMenu(rawMenu);
-const categories = Object.keys(menuData);
-let currentIndex = 0;
-
-
-// 🔘 BUTOANE (NU afectează celelalte butoane)
-const buttonsDiv = document.getElementById("menu-buttons");
-
-buttonsDiv.innerHTML = ""; // reset
-
-categories.forEach((cat) => {
-    const btn = document.createElement("button");
-    btn.innerText = menuData[cat].title;
-    btn.onclick = () => showMenu(cat);
-    buttonsDiv.appendChild(btn);
-});
-
-
-// 🔥 AFIȘARE
-function showMenu(category) {
-    const container = document.getElementById("menu-container");
-
-    // fade OUT
-    container.classList.remove("menu-animate", "show");
-
-    setTimeout(() => {
-
-        container.innerHTML = "";
-
-        currentIndex = categories.indexOf(category);
-
-        const btns = document.querySelectorAll("#menu-buttons button");
-        btns.forEach(b => b.classList.remove("active-btn"));
-        if (btns[currentIndex]) {
-            btns[currentIndex].classList.add("active-btn");
-        }
-
-        const data = menuData[category];
-
-        const title = document.createElement("div");
-        title.classList.add("category-title");
-        title.innerText = data.title;
-        container.appendChild(title);
-
-        // items simple
-        data.items.forEach((item, i) => {
-            const el = createItem(item);
-            el.style.animationDelay = `${i * 0.05}s`; // 🔥 stagger effect
-            container.appendChild(el);
+            buttonsDiv.appendChild(btn);
         });
 
-        // subcategorii
-        for (let sub in data.subcategories) {
-            const subTitle = document.createElement("div");
-            subTitle.classList.add("subcategory");
-            subTitle.innerText = sub;
-            container.appendChild(subTitle);
+        function showMenu(category) {
+            const container = document.getElementById("menu-container");
+            container.classList.remove("show");
 
-            data.subcategories[sub].forEach((item, i) => {
-                const el = createItem(item);
-                el.style.animationDelay = `${i * 0.05}s`;
-                container.appendChild(el);
-            });
+            setTimeout(() => {
+                container.innerHTML = "";
+                const currentIndex = categories.indexOf(category);
+                const btns = document.querySelectorAll("#menu-buttons button");
+                btns.forEach(b => b.classList.remove("active-btn"));
+                if (btns[currentIndex]) btns[currentIndex].classList.add("active-btn");
+
+                const data = menuData[category];
+                const title = document.createElement("div");
+                title.className = "category-title";
+                title.innerText = data.title;
+                container.appendChild(title);
+
+                data.items.forEach((item, i) => {
+                    const el = createItem(item);
+                    el.style.animationDelay = `${i * 0.05}s`;
+                    container.appendChild(el);
+                });
+
+                for (let sub in data.subcategories) {
+                    const subTitle = document.createElement("div");
+                    subTitle.className = "subcategory";
+                    subTitle.innerText = sub;
+                    container.appendChild(subTitle);
+                    data.subcategories[sub].forEach((item, i) => {
+                        const el = createItem(item);
+                        el.style.animationDelay = `${i * 0.05}s`;
+                        container.appendChild(el);
+                    });
+                }
+                container.classList.add("show");
+            }, 200);
         }
 
-        // trigger fade IN
-        container.classList.add("menu-animate");
-
-        setTimeout(() => {
-            container.classList.add("show");
-        }, 50);
-
-    }, 200); // durata fade OUT
-}
-
-
-// 🔧 ITEM UI
-function createItem(item) {
-    const div = document.createElement("div");
-    div.classList.add("item");
-
-    div.innerHTML = `
-        <div>
-            <strong>${item.name}</strong><br>
-            ${item.details}
-        </div>
-        <div>${item.price}</div>
-    `;
-
-    return div;
-}
-
-
-document.querySelector('.menu-buttons').addEventListener('click', function(e) {
-    // Verificăm dacă suntem pe mobil (ecran sub 768px)
-    if (window.innerWidth <= 768) {
-        const container = this;
-        
-        // Dacă dăm click pe butonul care este deja activ, deschidem/închidem lista
-        if (e.target.classList.contains('active-btn')) {
-            container.classList.toggle('expanded');
-        } else if (e.target.tagName === 'BUTTON') {
-            // Dacă alegem o categorie nouă, o selectăm și închidem lista
-            container.classList.remove('expanded');
+        function createItem(item) {
+            const div = document.createElement("div");
+            div.className = "item";
+            div.innerHTML = `
+                <div><strong>${item.name}</strong><br>${item.details}</div>
+                <div>${item.price}</div>
+            `;
+            return div;
         }
-    }
-});
 
+        // Inițializare prima categorie
+        showMenu(categories[0]);
 
-</script>
-
-
-   <footer class="footer">
-      <div class="footer-content">
-      <p class="copyright-footer" style="color: white;">© 2026 Saint Cafe · Baia Mare, Romania</p>
-      <p class="web-builder-footer" style="color: white;">Proudly built by <a href="https://www.instagram.com/ludusan.cristi/" target="_blank" style="color: cyan;">Cristi Ludușan</a></p>
-      <p class="terms-and-conditions" style="color: white;">Consult <a href="./terms.html" style="color: cyan;">Terms & Conditions</a></p>
-      </div>
-
-      <div class="anaf-links">
-    <a href="https://ec.europa.eu/consumers/odr" target="_blank">
-      <img src="./ANPC images/SOL.png" alt="Solutionare litigii online">
-    </a>
-
-    <a href="https://anpc.ro/" target="_blank">
-      <img src="./ANPC images/SAL.png" alt="SAL - Solutionare alternativa a litigiilor">
-    </a>
-  </div>
-   </footer>
-
-   </div>
-
-   </body>
+    </script>
+</body>
 </html>

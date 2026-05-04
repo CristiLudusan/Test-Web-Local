@@ -61,232 +61,232 @@
 
         // DATE MENIU
         const rawMenu = `
-Coffee
-Espresso // ground coffee 17g // 30ml // 11 lei
-Espresso Macchiato // ground coffee 8g, milk foam // 40ml // 12 lei
-Long Black // ground coffee 17g // 100ml // 13 lei
-Americano // ground coffee 8g // 100ml // 10 lei
-Cappuccino // ground coffee 8g, milk foam // 150ml // 15 lei
-Cortado // ground coffee 17g, milk foam // 100ml // 14 lei
-Latte // ground coffee 8g, milk foam // 300ml // 18 lei
-Ice Latte // ground coffee, milk foam, ice // 300ml // 18 lei
-Flat White // ground coffee 17g, milk foam // 200ml // 17 lei
-Aeropress // ground coffee 17g // 200ml // 20 lei
-V60 // ground coffee 17g // 200ml // 20 lei
-Chemex // ground coffee 30g // 400ml // 26 lei
-Cold Brew // ground coffee 15g // 150ml // 18 lei
-Cold Brew Tonic // ground coffee 17g, tonic water // 200ml // 21 lei
-Orange Espresso // ground coffee 17g, fresh orange juice // 150ml // 20 lei
-Plant Milk // coconut, oat, almond // 4lei
-Extra Syrup // coconut, vanilla, caramel, salted caramel, hazelnut // 10ml // 3 lei
+Cafea
+Espresso // cafea măcinată 17g // 30ml // 11 LEI
+Espresso Macchiato // cafea măcinată 8g, spumă de lapte // 40ml // 12 LEI
+Long Black // cafea măcinată 17g // 100ml // 13 LEI
+Americano // cafea măcinată 8g // 100ml // 10 LEI
+Cappuccino // cafea măcinată 8g, spumă de lapte // 150ml // 15 LEI
+Cortado // cafea măcinată 17g, spumă de lapte // 100ml // 14 LEI
+Latte // cafea măcinată 8g, spumă de lapte // 300ml // 18 LEI
+Ice Latte // cafea măcinată 8g, spumă de lapte, gheață // 300ml // 18 LEI
+Flat White // cafea măcinată 17g, spumă de lapte // 200ml // 17 LEI
+Aeropress // cafea măcinată 17g // 200ml // 20 LEI
+V60 // cafea măcinată 17g // 200ml // 20 LEI
+Chemex // cafea măcinată 30g // 400ml // 26 LEI
+Cold Brew // cafea măcinată 15g // 150ml // 18 LEI
+Cold Brew Tonic // cafea măcinată 17g, apă tonică // 200ml // 21 LEI
+Orange Espresso // cafea măcinată 17g, suc proaspăt de portocale // 150ml // 20 LEI
+Lapte vegetal // cocos, ovăz, migdale // 4 LEI
+Sirop extra // cocos, vanilie, caramel, caramel sărat, alune // 10ml // 3 LEI
 
-Soft Drinks
-Coca Cola // 250ml // 11 lei
-Coca Cola Zero // 250 ml // 11 lei
-Fritz Cola // 330 ml // 17 lei
-Fritz Cola Zero // 330ml // 17 lei
-Mellow Mango // 330ml // 17 lei
-Fentimans Ginger Beer // 275 ml // 17 lei
-Fentimans Naturally Light Tonic // 200ml // 14 lei
-Fentimans Grapefruit Tonic // 200ml // 14 lei
-Fentimans Oriental Yuzu Tonic // 200ml // 14 lei
-C-Side Tonic // 330ml // 16 lei
-Still / Sparkling Water LURISIA // 330ml // 10 lei
-Still / Sparkling Water LURISIA // 750ml // 18 lei
+Băuturi
+Coca Cola // 250ml // 11 LEI
+Coca Cola Zero // 250 ml // 11 LEI
+Fritz Cola // 330 ml // 17 LEI
+Fritz Cola Zero // 330ml // 17 LEI
+Mellow Mango // 330ml // 17 LEI
+Fentimans Ginger Beer // 275 ml // 17 LEI
+Fentimans Naturally Light Tonic // 200ml // 14 LEI
+Fentimans Grapefruit Tonic // 200ml // 14 LEI
+Fentimans Oriental Yuzu Tonic // 200ml // 14 LEI
+C-Side Tonic // 330ml // 16 LEI
+Apă plată / carbogazoasă LURISIA // 330ml // 10 LEI
+Apă plată / carbogazoasă LURISIA // 750ml // 18 LEI
 
-Lemonade // 330ml // 20 lei
-Fresh Juice // 250ml // 22 lei
-Ginger Boost // 100ml // 16 lei
-Matcha // 200ml // 20 lei
-Turmeric Latte // 200ml // 18 lei
-Infusion Tea // 200ml // 17 lei
-Hot Chocolate // 200ml // 17 lei
+Limonadă // 330ml // 20 LEI
+Fresh // portocală, grepfruit, mixt // 250ml // 22 LEI
+Ginger Boost // 100ml // 16 LEI
+Matcha // 200ml // 20 LEI
+Turmeric Latte // 200ml // 18 LEI
+Ceai infuzie // mentă, verde, negru, ghimbir, fructe, vanilie, lavandă // 200ml // 17 LEI
+Ciocolată caldă // neagră, albă // 200ml // 17 LEI
 
-Beer
-Peroni Nastro Azzuro // 330ml // 14 lei
-Peroni Stile Capri // 330ml // 15 lei
-Peroni Non-Alcoholic // 330ml // 14 lei
+Bere
+Peroni Nastro Azzuro // 330ml // 14 LEI
+Peroni Stile Capri // 330ml // 15 LEI
+Peroni Fără alcool // 330ml // 14 LEI
 
-Cocktails
-CLASSIC
-Aperol Spritz // Prosecco, Aperol, sparkling water, ice, orange // 28 lei
-Mojito // rum, lime juice, sugar syrup, mint, sparkling water // 28 lei
-Hugo // Prosecco, sparkling water, elderflower syrup, lime, mint // 28 lei
-Mimosa // Prosecco, orange juice, dandelion syrup // 25 lei
-Kir Royal // Prosecco, creme de cassis // 27 lei
-Espresso Martini // vodka, Kahlua, espresso, sugar syrup // 30 lei
-Campari Spritz // campari, Prosecco, sparkling water, orange // 28 lei
-Campari Orange // campari, orange juice // 25 lei
-Pornstar Martini // vanilla vodka, passion fruit liqueur, vanilla syrup, lime juice // 32 lei
-Fall Aperol Spritz // Prosecco, Aperol, pear juice, sparkling water, cinnamon, ice // 30 lei
-S'mores Espresso Martini // Vanilla Vodka, Kahula, Espresso, meringue syrup, maple syrup // 35 lei
-Sugar Cookie Martini // Vanilla, Vodka, Baileys, Birthday cake liqiour // 28 lei
-Grandpa's Cake // Vodka, red apple juice, cranberry juice, caramel syrup, lime juice, cinnamon, ice // 30 lei
-Screaming Orgasm // Vodka, Baileys, Amaretto, Kahula, almond milk, liquid whipped cream, ice // 38 lei
-Apple Pie On The Rocks // Apple cider, whiskey, Vanilla Vodka, ice // 28 lei
-Creme Brulee Whiskey // Whiskey, Baileys, sugar syrup, egg white, powdered sugar // 30 lei
-Hot Baileys // Baileys, Vodka, milk foam, cinnamon syrup // 32 lei
-RUM
-Cuba Libre // rum, cola, lime juice // 30 lei
-Mai Tai // rum, lime juice, orange curacao, almond syrup // 35 lei
-Pina Colada // rum, pineapple juice, whipped cream // 30 lei
-Dark'n Stormy // rum, ginger beer, lime juice // 33 lei
-Daiquiri // rum, lime juice, strawberry puree, grenadine syrup // 35 lei
-White Kiss // rum, coconut milk, lemon juice, cinnamon syrup // 32 lei
+Cocktailuri
+CLASSICE
+Aperol Spritz // Prosecco, Aperol, apă carbogazoasă, gheață, portocală // 28 LEI
+Mojito // rom, suc de lime, sirop de zahăr, mentă, apă carbogazoasă // 28 LEI
+Hugo // Prosecco, apă carbogazoasă, sirop de soc, lime, mentă // 28 LEI
+Mimosa // Prosecco, suc de portocale, sirop de păpădie // 25 LEI
+Kir Royal // Prosecco, creme de cassis // 27 LEI
+Espresso Martini // vodcă, Kahlua, espresso, sirop de zahăr // 30 LEI
+Campari Spritz // campari, Prosecco, apă carbogazoasă, portocală // 28 LEI
+Campari Orange // campari, suc de portocale // 25 LEI
+Pornstar Martini // vodcă de vanilie, lichior de fructul pasiunii, sirop de vanilie, suc de lime // 32 LEI
+Fall Aperol Spritz // Prosecco, Aperol, suc de pere, apă carbogazoasă, scorțișoară, gheață // 30 LEI
+S'mores Espresso Martini // Vodcă de vanilie, Kahula, Espresso, sirop de bezea, sirop de arțar // 35 LEI
+Sugar Cookie Martini // Vanilie, Vodcă, Baileys, lichior de tort // 28 LEI
+Grandpa's Cake // Vodcă, suc de mere roșii, suc de merișoare, sirop de caramel, suc de lime, scorțișoară, gheață // 30 LEI
+Screaming Orgasm // Vodcă, Baileys, Amaretto, Kahula, lapte de migdale, frișcă lichidă, gheață // 38 LEI
+Apple Pie On The Rocks // Cidru de mere, whiskey, Vodcă de vanilie, gheață // 28 LEI
+Creme Brulee Whiskey // Whiskey, Baileys, sirop de zahăr, albuș de ou, zahăr pudră // 30 LEI
+Hot Baileys // Baileys, Vodcă, spumă de lapte, sirop de scorțișoară // 32 LEI
+ROM
+Cuba Libre // rom, cola, suc de lime // 30 LEI
+Mai Tai // rom, suc de lime, orange curacao, sirop de migdale // 35 LEI
+Pina Colada // rom, suc de ananas, frișcă // 30 LEI
+Dark'n Stormy // rom, ginger beer, suc de lime // 33 LEI
+Daiquiri // rom, suc de lime, piure de căpșuni, sirop de grenadine // 35 LEI
+White Kiss // rom, lapte de cocos, suc de lămâie, sirop de scorțișoară // 32 LEI
 GIN
-Gin & Tonic // gin, tonic water, lime // 30 lei
-Negroni // gin, campari, vermouth // 30 lei
-Martini // gin, vermouth // 32 lei
-London Mule // gin, ginger beer, lime // 30 lei
-Blue Saint // gin, elderflower cordial, blue curacao, egg white // 30 lei
-French 75 // gin, lemon, sugar syrup, Prosecco // 28 lei
-Mango Gin Frizz // gin, mango juice, sugar syrup, lime juice, passion fruit syrup, sprite, mint // 35 lei
+Gin & Tonic // gin, apă tonică, lime // 30 LEI
+Negroni // gin, campari, vermut // 30 LEI
+Martini // gin, vermut // 32 LEI
+London Mule // gin, ginger beer, lime // 30 LEI
+Blue Saint // gin, sirop de soc, blue curacao, albuș de ou // 30 LEI
+French 75 // gin, lămâie, sirop de zahăr, Prosecco // 28 LEI
+Mango Gin Frizz // gin, suc de mango, sirop de zahăr, suc de lime, sirop de fructul pasiunii, sprite, mentă // 35 LEI
 VODKA
-Cosmopolitan // vodka, cranberry juice, cointreau, lime juice // 27 lei
-Moscow Mule // vodka, ginger beer, lime // 30 lei
-White Russian // vodka, coffee liqueur, liquid whipped cream // 35 lei
-Black Saint // vodka, coffee liqueur, ginger beer, blackcurrant liqueur // 45 lei
-Sex On A Snowbank // vodka, coconut milk, white chocolate cream, vanilla bitters // 35 lei
-Spring Rain // vodka, lime juice, blue curacao, ginger beer // 31 lei
+Cosmopolitan // vodcă, suc de merișoare, cointreau, suc de lime // 27 LEI
+Moscow Mule // vodcă, ginger beer, lime // 30 LEI
+White Russian // vodcă, lichior de cafea, frișcă lichidă // 35 LEI
+Black Saint // vodcă, lichior de cafea, ginger beer, lichior de coacăze negre // 45 LEI
+Sex On A Snowbank // vodcă, lapte de cocos, cremă de ciocolată albă, bitters de vanilie // 35 LEI
+Spring Rain // vodcă, suc de lime, blue curacao, ginger beer // 31 LEI
 WHISKEY
-Old Fashioned // bourbon, sugar, angostura bitter // 30 lei
-Manhattan // whiskey, vermouth, angostura bitter // 31 lei
-Whiskey Sour // bourbon, lemon juice, sugar, angostura bitter // 30 lei
-Boulevardier // campari, lemon juice, sugar, angostura bitter, egg white // 30 lei
-Godfather // amaretto, whiskey // 29 lei
-Naked On The Bells // bourbon, yellow chartreuse liquor, lime juice, mezcal // 38 lei
+Old Fashioned // bourbon, zahăr, angostura bitter // 30 LEI
+Manhattan // whiskey, vermut, angostura bitter // 31 LEI
+Whiskey Sour // bourbon, suc de lămâie, zahăr, angostura bitter // 30 LEI
+Boulevardier // campari, suc de lămâie, zahăr, angostura bitter, albuș de ou // 30 LEI
+Godfather // amaretto, whiskey // 29 LEI
+Naked On The Bells // bourbon, lichior yellow chartreuse, suc de lime, mezcal // 38 LEI
 TEQUILA
-Mexican Mule // tequila, ginger beer, lime juice // 30 lei
-Paloma // tequila, lime, sugar syrup, tonic water, grapefruit // 28 lei
-Siesta // tequila, campari, grapefruit juice, lime juice, sugar syrup // 28 lei
-Todos Santos // tequila, cointreau, lime juice // 28 lei
-Chilly Mango // tequila, lime juice, grapefruit juice, agave syrup, chilli sauce, mango puree // 30 lei
-Tequila Sour // tequila, aperol, strawberry syrup, lemon juice, egg white // 28 lei
-Tequila Sunrise // tequila, orange juice, grenadine syrup // 29 lei
+Mexican Mule // tequila, ginger beer, suc de lime // 30 LEI
+Paloma // tequila, lime, sirop de zahăr, apă tonică, grapefruit // 28 LEI
+Siesta // tequila, campari, suc de grapefruit, suc de lime, sirop de zahăr // 28 LEI
+Todos Santos // tequila, cointreau, suc de lime // 28 LEI
+Chilly Mango // tequila, suc de lime, suc de grapefruit, sirop de agave, sos chilli, piure de mango // 30 LEI
+Tequila Sour // tequila, aperol, sirop de căpșuni, suc de lămâie, albuș de ou // 28 LEI
+Tequila Sunrise // tequila, suc de portocale, sirop de grenadine // 29 LEI
 
-Mocktails
-Apple Pie Sip // apple juice, lime, apple pie syrup, vanilla sugar, cinnamon // 22 lei
-Grandma's Cake // apple, cinnamon, strawberry puree, caramel syrup, cranberry juice, apple juice // 25 lei
-Gin & Pear Affair // non-alcoholic gin, pear nectar, lime, honey syrup, nutmeg // 30 lei
+Mocktailuri
+Apple Pie Sip // suc de mere, lime, sirop apple pie, zahăr vanilat, scorțișoară // 22 LEI
+Grandma's Cake // mere, scorțișoară, piure de căpșuni, sirop de caramel, suc de merișoare, suc de mere // 25 LEI
+Gin & Pear Affair // gin fără alcool, nectar de pere, lime, sirop de miere, nucșoară // 30 LEI
 
-Shots
-Jelly Fish // campari, cointreau, gin Baileys // 20ml // 12 lei
-Lemon Drops // vodka, lemon juice, sugar syrup // 20ml // 7 lei
-B52 // coffee liqueur, cointreau, Baileys // 12 lei
-Tequila Shots // 20ml // 12 lei
-Jagermeister // 20ml // 12 lei
-Kamikaze // vodka, blue curacao, lemon juice // 20ml x 5 // 45 lei
-Alligator Sperm // melon liqueur, pineapple juice, whipped cream // 20ml x 5 // 42 lei
-Wet Pussy // vodka, peach tree, cranberry juice, pineapple juice // 20ml x 5 // 45 lei
-Hot Chocolate Baileys // Baileys, dark hot chocolate, whipped cream // 20ml x 5 // 38 lei
-Mulled Wine // 20ml // 25 lei
+Shoturi
+Jelly Fish // campari, cointreau, gin Baileys // 20ml // 12 LEI
+Lemon Drops // vodcă, suc de lămâie, sirop de zahăr // 20ml // 7 LEI
+B52 // lichior de cafea, cointreau, Baileys // 12 LEI
+Tequila Shots // 20ml // 12 LEI
+Jagermeister // 20ml // 12 LEI
+Kamikaze // vodcă, blue curacao, suc de lămâie // 20ml x 5 // 45 LEI
+Alligator Sperm // lichior de pepene, suc de ananas, frișcă // 20ml x 5 // 42 LEI
+Wet Pussy // vodcă, peach tree, suc de merișoare, suc de ananas // 20ml x 5 // 45 LEI
+Hot Chocolate Baileys // Baileys, ciocolată caldă neagră, frișcă // 20ml x 5 // 38 LEI
+Mulled Wine // 20ml // 25 LEI
 
-Non-Alcoholic
-Virgin London Mule // non-alcoholic gin, ginger beer, lime // 30 lei
-Virgin Gin&Tonic // non-alcoholic gin, tonic water, lime // 30 lei
-Virgin Mango Gin Frizz // non-alcoholic gin, mango juice, sugar syrup, lime juice, passion fruit syrup, sprite, mint // 35 lei
-Grandma's Cake // apple, cinnamon, strawberry puree, caramel syrup, cranberry juice, apple juice // 25 lei
-Safe Sex // orange juice, grenadine syrup // 20 lei
-Red Devil // cranberry juice, orange juice, lime juice, grenadine syrup // 24 lei
-Safe Strawberry Daiqiri // strawberry syrup, lime juice, sprite, strawberries // 23 lei
-Raspberry Ginger Frizz // lime juice, sugar syrup, raspberry puree, mint, ginger beer // 24 lei
+Non-Alcoolice
+Virgin London Mule // gin fără alcool, ginger beer, lime // 30 LEI
+Virgin Gin&Tonic // gin fără alcool, apă tonică, lime // 30 LEI
+Virgin Mango Gin Frizz // gin fără alcool, suc de mango, sirop de zahăr, suc de lime, sirop de fructul pasiunii, sprite, mentă // 35 LEI
+Grandma's Cake // mere, scorțișoară, piure de căpșuni, sirop de caramel, suc de merișoare, suc de mere // 25 LEI
+Safe Sex // suc de portocale, sirop de grenadine // 20 LEI
+Red Devil // suc de merișoare, suc de portocale, suc de lime, sirop de grenadine // 24 LEI
+Safe Strawberry Daiqiri // sirop de căpșuni, suc de lime, sprite, căpșuni // 23 LEI
+Raspberry Ginger Frizz // suc de lime, sirop de zahăr, piure de zmeură, mentă, ginger beer // 24 LEI
 
-Spirits
+Spirtoase
 WHISKEY
-Bulleit Bourbon // 40ml // 18 lei
-Gentleman Jack // 40ml // 18 lei
-Akashi // 40ml // 25 lei
-Hibiki // 40ml // 39 lei
+Bulleit Bourbon // 40ml // 18 LEI
+Gentleman Jack // 40ml // 18 LEI
+Akashi // 40ml // 25 LEI
+Hibiki // 40ml // 39 LEI
 COGNAC
-Hennesey Vs // 40ml // 27 lei
-Hine Vsop // 40ml // 22 lei
-Courvoisier Xo // 40ml // 49 lei
+Hennesey Vs // 40ml // 27 LEI
+Hine Vsop // 40ml // 22 LEI
+Courvoisier Xo // 40ml // 49 LEI
 VODKA
-Absolut Flavours // 40ml // 18 lei
-Ciroc // 40ml // 20 lei
-Finlandia // 40ml // 15 lei
-Grey Goose // 40ml // 28 lei
-Haku // 40ml // 30 lei
+Absolut Flavours // 40ml // 18 LEI
+Ciroc // 40ml // 20 LEI
+Finlandia // 40ml // 15 LEI
+Grey Goose // 40ml // 28 LEI
+Haku // 40ml // 30 LEI
 GIN
-Tanqueray // 40ml // 14 lei
-Gin Mare // 20 lei
-Hendrick's // 40ml // 18 lei
-Ukiyo Yuzu // 40ml // 16 lei
-Pușcălupi // 40ml // 36 lei
-RUM
-Havana Spiced // 40ml // 20 lei
-Bumbu Xo // 40ml // 30 lei
-Conde De Cuba // 40ml // 35 lei
-Don Papa 7y // 40ml // 35 lei
-Diplomatico 12y // 25 lei
+Tanqueray // 40ml // 14 LEI
+Gin Mare // 20 LEI
+Hendrick's // 40ml // 18 LEI
+Ukiyo Yuzu // 40ml // 16 LEI
+Pușcălupi // 40ml // 36 LEI
+ROM
+Havana Spiced // 40ml // 20 LEI
+Bumbu Xo // 40ml // 30 LEI
+Conde De Cuba // 40ml // 35 LEI
+Don Papa 7y // 40ml // 35 LEI
+Diplomatico 12y // 25 LEI
 TEQUILA
-Don Julio Reposado // 40ml // 25 lei
-1800 Silver // 40ml // 24 lei
-LIQUEURS
-Sambuca // 40ml // 10 lei
-Disaronno // 40ml // 10 lei
-Mama Mia Limoncello // 40 ml // 14 lei
-Tatratea // 40ml // 16 lei
+Don Julio Reposado // 40ml // 25 LEI
+1800 Silver // 40ml // 24 LEI
+LICHIORURI
+Sambuca // 40ml // 10 LEI
+Disaronno // 40ml // 10 LEI
+Mama Mia Limoncello // 40 ml // 14 LEI
+Tatratea // 40ml // 16 LEI
 
-Snacks
-PLATTERS
-Saint Plate // olives, parmesan, grapes, crackers, prosciutto crudo // 200gr // 29 lei
-Cheese Plate // gorgonzola, parmesan, aged cheddar, brie, walnut, grapes // 500gr // 68 lei
-Gourmet Plate // bresaola, fuet salami, prosciutto crudo, olives, crackers // 400gr // 68 lei
-Trio Starter // classic hummus, eggplant salad, mushroom zacusca, toasted bread // 300gr // 38 lei
-Green Olives // 140 gr // 15 lei
-Chips // 50gr // 10 lei
-Semifreddo // 100gr // 19 lei
-CANNED
-Sardines // 115gr // 45 lei
-Mussels // 110gr // 45 lei
-Tuna Fillet // 120gr // 40 lei
-CROISSANTS
-Butter Croissant // 8 lei
-Chocolate Croissant // 11 lei
+Gustări
+PLATOURI
+Saint Plate // măsline, parmezan, struguri, crackers, prosciutto crudo // 200gr // 29 LEI
+Cheese Plate // gorgonzola, parmezan, cheddar maturat, brie, nuci, struguri // 500gr // 68 LEI
+Gourmet Plate // bresaola, salam fuet, prosciutto crudo, măsline, crackers // 400gr // 68 LEI
+Trio Starter // hummus clasic, salată de vinete, zacuscă de ciuperci, pâine prăjită // 300gr // 38 LEI
+Green Olives // 140 gr // 15 LEI
+Chips // 50gr // 10 LEI
+Semifreddo // 100gr // 19 LEI
+CONSERVE
+Sardines // 115gr // 45 LEI
+Mussels // 110gr // 45 LEI
+Tuna Fillet // 120gr // 40 LEI
+CROISSANTE
+Butter Croissant // 8 LEI
+Chocolate Croissant // 11 LEI
 
-Bottled Wines
-WHITE
-Viognier Secret de Famille 2023, Cotes du Rhone AOC, 12.5%// 750ml // 120 lei
-Pinot Grigio - Implicit, 11.5% // 750ml // 95 lei
-Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 750ml // 120 lei
-Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 750ml // 95 lei
+Vinuri la sticlă
+ALB
+Viognier Secret de Famille 2023, Cotes du Rhone AOC, 12.5%// 750ml // 120 LEI
+Pinot Grigio - Implicit, 11.5% // 750ml // 95 LEI
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 750ml // 120 LEI
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 750ml // 95 LEI
 ROSE
-La Plage Rose 12.5% // 750ml // 95 lei
-RED
-Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 750ml // 120 lei
-Syrah 2021, Cotes du Rhone AOC, 13.5% // 750ml // 120 lei
-Carmenere Reserva 2021, 13.5% // 750ml // 120 lei
-Fetească Neagră - Implicit, 14.5% // 750ml // 95 lei
-SPARKLING
-Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 750ml // 95 lei
-Cremant d'Alsace, 12% // 750ml // 145 lei
+La Plage Rose 12.5% // 750ml // 95 LEI
+ROȘU
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 750ml // 120 LEI
+Syrah 2021, Cotes du Rhone AOC, 13.5% // 750ml // 120 LEI
+Carmenere Reserva 2021, 13.5% // 750ml // 120 LEI
+Fetească Neagră - Implicit, 14.5% // 750ml // 95 LEI
+SPUMANT
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 750ml // 95 LEI
+Cremant d'Alsace, 12% // 750ml // 145 LEI
 PROSECCO
-Maschio dei Cavalieri Prosecco Valdobbiadene Superiore DOCG extra dry, 11% // 750ml // 120 lei
-Terre di Marca Prosecco Alb Extra Dry Bio Millessimato, 11% // 750ml // 95 lei
-Millesimato Brut Prosecco Superiore, Valdobbiadene DOGC, 11% // 750ml // 120 lei
-Cartizze Brut Villa Sandi Superiore DOCG, 11.5% // 750ml // 290 lei
+Maschio dei Cavalieri Prosecco Valdobbiadene Superiore DOCG extra dry, 11% // 750ml // 120 LEI
+Terre di Marca Prosecco Alb Extra Dry Bio Millessimato, 11% // 750ml // 95 LEI
+Millesimato Brut Prosecco Superiore, Valdobbiadene DOGC, 11% // 750ml // 120 LEI
+Cartizze Brut Villa Sandi Superiore DOCG, 11.5% // 750ml // 290 LEI
 
-Wine by Glass
-WHITE
-Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 150ml // 27 lei
-Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 150ml // 23 lei
+Vin la pahar
+ALB
+Sauvignon Blanc Casas del Bosque Collection 2024, 13.5% // 150ml // 27 LEI
+Aragosta 2024, Vermentino di Sardegna DOC, 12.5% // 150ml // 23 LEI
 ROSE
-La Plage Rose 12.5% // 150ml // 23 lei
-RED
-Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 150ml // 27 lei
-Fetească Neagră - Implicit, 14.5% // 150ml // 23 lei
-SPARKLING
-Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 150ml // 25 lei
+La Plage Rose 12.5% // 150ml // 23 LEI
+ROȘU
+Vitis Nostra Primitivo 2023, Puglia IGT, 13.5% // 150ml // 27 LEI
+Fetească Neagră - Implicit, 14.5% // 150ml // 23 LEI
+SPUMANT
+Rotari Cuvee'28 Brut, Metodo Classico, Trento DOC, 12.5% // 150ml // 25 LEI
 PROSECCO
-Terre di Marca Prosecco Alb, Extra Dry Bio Millessimato, 11% // 150ml // 23 lei
-Millesimato Brut Prosecco Superiore, Valdobbiadene, 11% // 150ml // 27 lei
+Terre di Marca Prosecco Alb, Extra Dry Bio Millessimato, 11% // 150ml // 23 LEI
+Millesimato Brut Prosecco Superiore, Valdobbiadene, 11% // 150ml // 27 LEI
 
 Sips Of The Season
-Biscoff Latte // ground coffee 17g, milk foam, cookie syrup, cinnamon, whipped cream, biscoff cookie // 24 lei
-Gingerbread Latte // ground coffee 17g, milk foam, vanilla syrup, gingerbread syrup, cinnamon, nutmeg, brown sugar, anise, whipped cream // 26 lei
-Pumpkin Spice Latte // ground coffee 17g, milk foam, vanilla syrup, cinnamon, nutmeg, brown sugar, anise, whipped cream // 28 lei
-Chai Latte // milk foam, chai latte syrup // 17 lei
+Biscoff Latte // cafea măcinată 17g, spumă de lapte, sirop de biscuiți, scorțișoară, frișcă, biscuiți biscoff // 24 LEI
+Gingerbread Latte // cafea măcinată 17g, spumă de lapte, sirop de vanilie, sirop de turtă dulce, scorțișoară, nucșoară, zahăr brun, anason, frișcă // 26 LEI
+Pumpkin Spice Latte // cafea măcinată 17g, spumă de lapte, sirop de vanilie, scorțișoară, nucșoară, zahăr brun, anason, frișcă // 28 LEI
+Chai Latte // spumă de lapte, sirop chai latte // 17 LEI
 `;
 
         function parseMenu(text) {
